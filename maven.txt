@@ -1,0 +1,93 @@
+mkdir java and cd java
+
+1)https://download.java.net/java/GA/jdk13/5b8a42f3905b406298b72d750b6919f6/33/GPL/openjdk-13_linux-x64_bin.tar.gz
+
+
+https://download.java.net/java/GA/jdk13/5b8a42f3905b406298b72d750b6919f6/33/GPL/openjdk-13_linux-x64_bin.tar.gz
+
+2)tar xvf openjdk-13_linux-x64_bin.tar.gz
+
+3)cd jdk.13
+pwd
+
+vi /etc/profile.d/jdk13.sh
+
+export JAVA_HOME=/home/hari/java/jdk-13
+export PATH=${JAVA_HOME}/bin:${PATH}
+
+
+5) source /etc/profile.d/jdk13.sh
+
+6) echo $JAVA_HOME
+
+7)java -version
+
+
+
+**********************How to install maven*****************  
+
+
+1)  mkdir maven
+2)cd maven  and wget https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+
+3)tar -xvf apache-maven-3.6.3-bin.tar.gz
+4)cd apache-maven-3.6.3
+5)pwd =path 
+6)vi /etc/profile.d/maven.sh
+export M2_HOME=/home/hari/maven/apache-maven-3.6.3(copy the path where the maven)
+export PATH=${M2_HOME}/bin:${PATH}
+
+
+7)source /etc/profile.d/maven.sh
+
+8)mvn --version
+
+
+********Jenkins*****************
+
+  
+  sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
+  sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+
+ yum install jenkins -y
+
+ yum install java -y
+  
+ service jenkins start
+ service jenkins status
+  
+ systemctl enable jenkins
+
+service firewalld stop
+
+systemctl disable firewalld
+
+
+
+*******************Tomcat*****************
+
+
+1)java install
+2)mkdir tomcat
+3)wget link
+4)tar -xvf .gz
+5)change wepapps/manager/META-INF/conext.xml
+6)change conf/tomcat_user.xml
+
+
+<?xml version='1.0' encoding='utf-8'?>
+<tomcat-users>
+    <role rolename="tomcat"/>
+    <role rolename="role1"/>
+    <user username="tomcat" password="tomcat" roles="tomcat"/> 
+    <role rolename="manager-gui"/>
+    <user username="tomcat" password="Welcome" roles="manager-gui,manager-script,manager-status"/>
+    <user username="both" password="tomcat" roles="tomcat,role1"/>
+    <user username="role1" password="tomcat" roles="role1"/>
+</tomcat-users>
+
+
+
+7)cd bin ./startup.sh  /  ./shutdown.sh
+
+
