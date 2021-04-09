@@ -90,4 +90,16 @@ systemctl disable firewalld
 
 7)cd bin ./startup.sh  /  ./shutdown.sh
 
+*****************Docker**************
+
+yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+
+dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+dnf list docker-ce
+
+dnf install docker-ce --nobest
+
+docker -v
+
+systemctl enable --now docker
 
