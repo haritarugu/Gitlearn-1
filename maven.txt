@@ -103,3 +103,8 @@ docker -v
 
 systemctl enable --now docker
 
+
+
+****************nexus********************
+https://devopscube.com/how-to-install-latest-sonatype-nexus-3-on-linux/
+
