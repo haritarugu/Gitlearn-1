@@ -108,3 +108,6 @@ systemctl enable --now docker
 ****************nexus********************
 https://devopscube.com/how-to-install-latest-sonatype-nexus-3-on-linux/
 
+
+******************Sonarqube*******************************
+docker run -d --name sonarqube -p 9000:9000 sonarqube:lts
