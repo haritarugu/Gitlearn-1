@@ -108,6 +108,23 @@ systemctl enable --now docker
 ****************nexus********************
 https://devopscube.com/how-to-install-latest-sonatype-nexus-3-on-linux/
 
+vi /etc/systemd/system/nexus.service
+
+[Unit]
+Description=Vinematik Service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=buraksumer13
+ExecStart=/home/buraksumer13/.nvm/versions/node/v14.2.0/bin node home/buraksumer13/Documents/vinematikIns/index.js  
+
+[Install]
+WantedBy=multi-user.target
+
 
 ******************Sonarqube*******************************
 docker run -d --name sonarqube -p 9000:9000 sonarqube:lts
