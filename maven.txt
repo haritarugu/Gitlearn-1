@@ -106,24 +106,26 @@ systemctl enable --now docker
 
 
 ****************nexus********************
-https://devopscube.com/how-to-install-latest-sonatype-nexus-3-on-linux/
+cd /opt
+wget https://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.0.2-02-unix.tar.gz
+tar -zxvf  nexus-3.0.2-02-unix.tar.gz
+mv /opt/nexus-3.0.2-02 /opt/nexus
+As a good security practice, it is not advised to run nexus service as root. so create new user called nexus and grant sudo access to manage nexus services
 
-vi /etc/systemd/system/nexus.service
+sudo adduser nexus
+# visudo \\ nexus   ALL=(ALL)       NOPASSWD: ALL
+sudo chown -R nexus:nexus /opt/nexus
+Open /opt/nexus/bin/nexus.rc file, uncomment run_as_user parameter and set it as following.
 
-[Unit]
-Description=Vinematik Service
-After=network.target
-StartLimitIntervalSec=0
+vi /opt/nexus/bin/nexus.rc
+run_as_user="nexus" (file shold have only this line)
+Add nexus as a service at boot time
 
-[Service]
-Type=simple
-Restart=always
-RestartSec=1
-User=buraksumer13
-ExecStart=/home/buraksumer13/.nvm/versions/node/v14.2.0/bin node home/buraksumer13/Documents/vinematikIns/index.js  
+sudo ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
+Login as a nexus user and start service
 
-[Install]
-WantedBy=multi-user.target
+su - nexus
+service nexus start
 
 
 ******************Sonarqube*******************************
