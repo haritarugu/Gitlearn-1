@@ -69,7 +69,7 @@ systemctl disable firewalld
 
 1)java install
 2)mkdir tomcat
-3)wget link
+3)wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.65/bin/apache-tomcat-8.5.65.tar.gz
 4)tar -xvf .gz
 5)change wepapps/manager/META-INF/conext.xml
 6)change conf/tomcat_user.xml
